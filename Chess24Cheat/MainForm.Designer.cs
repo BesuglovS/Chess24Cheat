@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.controlsPanel = new System.Windows.Forms.Panel();
+            this.cliiiick = new System.Windows.Forms.Button();
+            this.yCoord = new System.Windows.Forms.TextBox();
+            this.xCoord = new System.Windows.Forms.TextBox();
             this.EngineFilename = new System.Windows.Forms.TextBox();
             this.QSmBox = new System.Windows.Forms.CheckBox();
             this.KSmBox = new System.Windows.Forms.CheckBox();
@@ -38,7 +41,7 @@
             this.score = new System.Windows.Forms.Label();
             this.PlayForMe = new System.Windows.Forms.CheckBox();
             this.AnalysisTimeUnits = new System.Windows.Forms.Label();
-            this.AnalysisTime = new System.Windows.Forms.TextBox();
+            this.AnalysisTimeLower = new System.Windows.Forms.TextBox();
             this.AnalysisResult = new System.Windows.Forms.Label();
             this.richTextBox = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -49,12 +52,19 @@
             this.start = new System.Windows.Forms.Button();
             this.browserPanel = new System.Windows.Forms.Panel();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.AnalysisTimeUpper = new System.Windows.Forms.TextBox();
+            this.ClearRtb = new System.Windows.Forms.Button();
             this.controlsPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // controlsPanel
             // 
+            this.controlsPanel.Controls.Add(this.ClearRtb);
+            this.controlsPanel.Controls.Add(this.AnalysisTimeUpper);
+            this.controlsPanel.Controls.Add(this.cliiiick);
+            this.controlsPanel.Controls.Add(this.yCoord);
+            this.controlsPanel.Controls.Add(this.xCoord);
             this.controlsPanel.Controls.Add(this.EngineFilename);
             this.controlsPanel.Controls.Add(this.QSmBox);
             this.controlsPanel.Controls.Add(this.KSmBox);
@@ -63,7 +73,7 @@
             this.controlsPanel.Controls.Add(this.score);
             this.controlsPanel.Controls.Add(this.PlayForMe);
             this.controlsPanel.Controls.Add(this.AnalysisTimeUnits);
-            this.controlsPanel.Controls.Add(this.AnalysisTime);
+            this.controlsPanel.Controls.Add(this.AnalysisTimeLower);
             this.controlsPanel.Controls.Add(this.AnalysisResult);
             this.controlsPanel.Controls.Add(this.richTextBox);
             this.controlsPanel.Controls.Add(this.groupBox1);
@@ -76,13 +86,37 @@
             this.controlsPanel.Size = new System.Drawing.Size(1098, 133);
             this.controlsPanel.TabIndex = 0;
             // 
+            // cliiiick
+            // 
+            this.cliiiick.Location = new System.Drawing.Point(725, 97);
+            this.cliiiick.Name = "cliiiick";
+            this.cliiiick.Size = new System.Drawing.Size(75, 23);
+            this.cliiiick.TabIndex = 18;
+            this.cliiiick.Text = "Click";
+            this.cliiiick.UseVisualStyleBackColor = true;
+            this.cliiiick.Click += new System.EventHandler(this.cliiiick_Click);
+            // 
+            // yCoord
+            // 
+            this.yCoord.Location = new System.Drawing.Point(668, 100);
+            this.yCoord.Name = "yCoord";
+            this.yCoord.Size = new System.Drawing.Size(40, 20);
+            this.yCoord.TabIndex = 17;
+            // 
+            // xCoord
+            // 
+            this.xCoord.Location = new System.Drawing.Point(622, 100);
+            this.xCoord.Name = "xCoord";
+            this.xCoord.Size = new System.Drawing.Size(40, 20);
+            this.xCoord.TabIndex = 16;
+            // 
             // EngineFilename
             // 
             this.EngineFilename.Location = new System.Drawing.Point(12, 99);
             this.EngineFilename.Name = "EngineFilename";
             this.EngineFilename.Size = new System.Drawing.Size(422, 20);
             this.EngineFilename.TabIndex = 15;
-            this.EngineFilename.Text = "D:\\Chess\\stockfish-8-win\\Windows\\stockfish_8_x64.exe";
+            this.EngineFilename.Text = "G:\\Chess\\stockfish-8-win\\Windows\\stockfish_8_x64_popcnt.exe";
             // 
             // QSmBox
             // 
@@ -162,14 +196,14 @@
             this.AnalysisTimeUnits.TabIndex = 7;
             this.AnalysisTimeUnits.Text = "milliseconds";
             // 
-            // AnalysisTime
+            // AnalysisTimeLower
             // 
-            this.AnalysisTime.Location = new System.Drawing.Point(250, 53);
-            this.AnalysisTime.Name = "AnalysisTime";
-            this.AnalysisTime.Size = new System.Drawing.Size(91, 20);
-            this.AnalysisTime.TabIndex = 6;
-            this.AnalysisTime.Text = "5000";
-            this.AnalysisTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AnalysisTimeLower.Location = new System.Drawing.Point(250, 53);
+            this.AnalysisTimeLower.Name = "AnalysisTimeLower";
+            this.AnalysisTimeLower.Size = new System.Drawing.Size(40, 20);
+            this.AnalysisTimeLower.TabIndex = 6;
+            this.AnalysisTimeLower.Text = "100";
+            this.AnalysisTimeLower.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // AnalysisResult
             // 
@@ -268,6 +302,25 @@
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // AnalysisTimeUpper
+            // 
+            this.AnalysisTimeUpper.Location = new System.Drawing.Point(301, 53);
+            this.AnalysisTimeUpper.Name = "AnalysisTimeUpper";
+            this.AnalysisTimeUpper.Size = new System.Drawing.Size(40, 20);
+            this.AnalysisTimeUpper.TabIndex = 19;
+            this.AnalysisTimeUpper.Text = "500";
+            this.AnalysisTimeUpper.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ClearRtb
+            // 
+            this.ClearRtb.Location = new System.Drawing.Point(826, 89);
+            this.ClearRtb.Name = "ClearRtb";
+            this.ClearRtb.Size = new System.Drawing.Size(75, 23);
+            this.ClearRtb.TabIndex = 20;
+            this.ClearRtb.Text = "Clear";
+            this.ClearRtb.UseVisualStyleBackColor = true;
+            this.ClearRtb.Click += new System.EventHandler(this.ClearRtb_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,7 +353,7 @@
         private System.Windows.Forms.Button RunAnalysis;
         private System.Windows.Forms.Button InitTheEngine;
         private System.Windows.Forms.Label AnalysisTimeUnits;
-        private System.Windows.Forms.TextBox AnalysisTime;
+        private System.Windows.Forms.TextBox AnalysisTimeLower;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.CheckBox PlayForMe;
         private System.Windows.Forms.Label score;
@@ -309,6 +362,11 @@
         private System.Windows.Forms.CheckBox QBox;
         private System.Windows.Forms.CheckBox KBox;
         private System.Windows.Forms.TextBox EngineFilename;
+        private System.Windows.Forms.Button cliiiick;
+        private System.Windows.Forms.TextBox yCoord;
+        private System.Windows.Forms.TextBox xCoord;
+        private System.Windows.Forms.TextBox AnalysisTimeUpper;
+        private System.Windows.Forms.Button ClearRtb;
     }
 }
 

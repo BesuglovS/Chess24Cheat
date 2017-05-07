@@ -251,13 +251,17 @@ namespace Chess24Cheat
 
                     p = getCoordinates(move, whiteRb.Checked);
 
+                    var cursorPosition = Cursor.Position;
+                    
                     // Thread.Sleep(100);
-                    // 90 390
+                    // 90 425
                     // 410 395
-                    MakeClick(410 + (p.Item1.X - 1) * 53, 395 + (p.Item1.Y - 1) * 53);
+                    MakeClick(90 + (p.Item1.X - 1) * 53, 425 + (p.Item1.Y - 1) * 53);
 
                     // Thread.Sleep(100);
-                    MakeClick(410 + (p.Item2.X - 1) * 53, 395 + (p.Item2.Y - 1) * 53);
+                    MakeClick(90 + (p.Item2.X - 1) * 53, 425 + (p.Item2.Y - 1) * 53);
+
+                    Cursor.Position = cursorPosition;
                 }
 
                 if (outLine.Data.Contains("score"))
@@ -370,13 +374,18 @@ namespace Chess24Cheat
             richTextBox.AppendText("position " + fen + "\n");
             Thread.Sleep(100);
 
-            int pt;
+            int lowerTime;
+            int.TryParse(AnalysisTimeLower.Text, out lowerTime);
 
-            int.TryParse(AnalysisTime.Text, out pt);
+            int upperTime;
+            int.TryParse(AnalysisTimeUpper.Text, out upperTime);
+
+            Random r = new Random();
+            int analysisTime = r.Next(lowerTime, upperTime);
 
             try
             {
-                EngineStreamWriter.WriteLine("go movetime " + pt);
+                EngineStreamWriter.WriteLine("go movetime " + analysisTime);
             }
             catch (Exception e)
             {
@@ -456,6 +465,16 @@ namespace Chess24Cheat
             {
                 ourMove = false;
             }
+        }
+
+        private void cliiiick_Click(object sender, EventArgs e)
+        {
+            MakeClick(int.Parse(xCoord.Text), int.Parse(yCoord.Text));
+        }
+
+        private void ClearRtb_Click(object sender, EventArgs e)
+        {
+            richTextBox.Clear();
         }
     }
 }
